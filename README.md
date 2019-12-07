@@ -19,18 +19,17 @@ You can use SDK from : window.empowjs
 ```
 const empowjs = require('empowjs')
 
-// init wallet
-// import from private key
+// CREATE WALLET OR IMPORT WALLET FROM PRIVATE KEY
 const privateKeyBuffer = empowjs.Base58.decode(<YOUR PRIVATE KEY>)
 const wallet = new empowjs.Wallet(privateKeyBuffer)
 // OR create new wallet
 // const wallet = empowjs.Wallet.create()
 
-// init sdk
+// INIT SDK AND CONNECT TO BLOCKCHAIN
 const rpc = new empowjs.RPC(new empowjs.HTTPProvider('http://localhost:30001'))
 const empow = new empowjs.EMPOW(rpc,wallet)
 
-// send tx
+// SEND TX
 const tx = empow.callABI("token.empow", "transfer", ["em", wallet.address, "EM2ZsEf9ZocshEqNYcVKiW7FCuBZHqMis8VMggxSJwggEpbU3", "100", "test transfer"])
 // add amount limit for tx
 tx.addApprove("em", 100)
